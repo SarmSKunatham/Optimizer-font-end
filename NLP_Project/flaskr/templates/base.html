@@ -1,26 +1,151 @@
+<!---- > Base Create Once use all  <!----> 
 <!Doctype html>
-<title>{% block title %}{% endblock %}</title>
-<link rel="styelsheet" href="{{url_for('static', filename='style.css')}}">
-<nav>
-    <h1>Optimizer</h1>
-    <ul>
-        {% if g.user %}
-        <li><span>{{g.user.username}}</span></li>
-        <li><a href="{{url_for('auth.logout')}}">Logout</a></li>
-        {% else %}
-        <li><a href="{{url_for('auth.login')}}">Login</a></li>
-        <li><a href="{{url_for('auth.register')}}">Register</a></li>
-        {% endif %}
-    </ul>
+
+
+<!---- > Head contains all link and extension  <!----> 
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  <link rel="styelsheet" href="{{url_for('static', filename='style.css')}}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  {% block styelsheet %}{% endblock %}
+</head>
+
+
+<!---- > Navigation Bar  <!----> 
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src={{url_for('static', filename='images/cropped-optimizer_b 1.png')}} width="150" height="55">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Optimizer</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">ABOUT</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">USE CASES</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">PLANS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">CONTACT</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">LOG IN</a>
+          </li>
+          
+        </ul>
+        <form class="d-flex mt-2">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </nav>
-<section>
-    <header>
-        {% block header %}{% endblock %}
-    </header>
-    {% for message in get_flashed_messages() %}
-    <div class="flash">{{ message }}</div>
-  {% endfor %}
-    <main>
-        {% block main %}{% endblock %}
-    </main>
-</section>
+
+
+<!---- > Header of the content  <!----> 
+<header class="container-fluid header mt-5">
+  {% block header %}{% endblock %}
+</header>
+
+
+<!---- > Content of the page  <!----> 
+<content class="container-fluid">
+    {% block content %}{% endblock %}
+</content>
+
+
+
+
+
+<!---- > Footer NOTHING TO CHANGE HERE  <!----> 
+<div class="container-fluid">
+  <footer class="py-5">
+    <div class="head-footer mb-5  bg-light p-3">
+      <div class="row align-items-center">
+        <div class="col-4">
+          <span><h3>Join  <img src={{url_for('static', filename='images/cropped-optimizer_b 1.png')}} width="120" height="40"></h3></span>
+        </div>
+        <div class="col-8">
+          <form>
+            <h5>Subscribe to our newsletter</h5>
+            <p>Monthly digest of whats new and exciting from us.</p>
+            <div class="d-flex w-100 gap-2">
+              <label for="newsletter1" class="visually-hidden">Email address</label>
+              <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
+              <button class="btn btn-primary" type="button">Subscribe</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+   
+    <div class="row flex justify-content-center">
+      <div class="col-2">
+        <h5 class="mb-4">Product</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Plan</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Use cases</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Tutorial</a></li>
+        </ul>
+      </div>
+
+      <div class="col-2">
+        <h5 class="mb-4">Company</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Blog</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Affiliates</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Optimizer API</a></li>
+        </ul>
+      </div>
+
+      <div class="col-2">
+        <h5 class="mb-4">Features</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Feature Launch</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Keyword Summary</a></li>
+        </ul>
+      </div>
+
+      <div class="col-2">
+        <h5 class="mb-4">Privacy</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Privacy Policy</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Terms of Service</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Security</a></li>
+        </ul>
+      </div>
+
+      <div class="col-2">
+        <h5 class="mb-4">Connect</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQ</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Send Feedback</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Contact Us</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="d-flex justify-content-center py-4 my-4 border-top">
+      <p class="text-muted">© 2022 OPTIMIZER. All rights reserved.</p>
+    </div>
+  </footer>
+</div>
+
