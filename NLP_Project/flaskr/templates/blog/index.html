@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% block title %}Optimizer{% endblock %}
-{% block styelsheet %}{% endblock %}
+{% block styelsheet %}
+    <link rel="stylesheet" href="{{url_for('static', filename='index.css')}}">
+{% endblock %}
 {% block header %}
     <h1>Optimizer</h1>
+    
 {% endblock %}

@@ -1,0 +1,8 @@
+header {
+    background-image: url("images/bg.png");
+    position: absolute;
+    width: 1440px;
+    height: 841px;
+    left: 0px;
+    top: 10em;
+}
