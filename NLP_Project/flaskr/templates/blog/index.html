@@ -1,9 +1,28 @@
+<!-- use form basse  -->
 {% extends 'base.html' %}
 {% block title %}Optimizer{% endblock %}
 {% block styelsheet %}
-    <link rel="stylesheet" href="{{url_for('static', filename='index.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='index.css')}}">    
+<!-- <link rel="stylesheet" href="{{url_for('static', filename='index.css')}}"> -->
 {% endblock %}
 {% block header %}
-    <h1>Optimizer</h1>
-    
+{% endblock %}
+{% block content %}
+<div class="motto_optimizer_container">
+    <div class="motto_optimizer">
+        <h1 class="motto_optimizer_text">
+            Optimize your strength and discover opportunities with Optimizer!
+        </h1>
+    </div>
+    <!-- <img id="image_head" href={{url_for('static', filename='images/bg.png')}}> -->
+    <button type="button" class="btn btn-light" id="motto_optimizer_btn"href="https://optimizer.superai.me/">
+        TRY NOW!
+    </button>
+    <img id="image_head" src="static/images/bg.png" class="image_head" >
+</div>
+<div class="container-xxl">
+    <h1 class="container_text">
+        Utilize the power of AI to magnifying your strategies
+    </h1>
+</div>
 {% endblock %}
