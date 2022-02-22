@@ -1,15 +1,25 @@
 {% extends 'base.html' %}
 
 {% block header %}
-    <h1>{% block title %}Register{% endblock %}</h1>
+    <h1 class="text-center">Register Individual Account</h1>
 {% endblock %}
 
-{% block main %}
-    <form method="POST">
-        <label for="username">Username</label>
-        <input name="username" id="username" required>
-        <label for="password">Password</label>
-        <input name="password" id="password" type="password" required>
-        <input type="submit" value="Register">
+{% block content %}
+<div class="container flex justify-content-center">
+    <form  method="post">
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="username" class="form-control" id="username" required placeholder="Username...">
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" required placeholder="pasword...">
+      </div>
+      <div class="mb-3">
+        <label for="re-password" class="form-label">Re-password</label>
+        <input type="password" class="form-control" id="re-password" required placeholder="re-pasword...">
+      </div>
+      <button type="submit" class="btn btn-secondary">Register</button>
     </form>
+  </div>
 {% endblock %}
