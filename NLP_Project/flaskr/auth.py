@@ -14,6 +14,7 @@ def register():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
+        repassword = request.form['repassword']
         db = get_db()
         error = None
 
@@ -21,6 +22,8 @@ def register():
             error = 'Username is required.'
         elif not password:
             error = 'Password is required.'
+        elif not repassword:
+            error = 'Re-password is required.'
 
         if error is None:
             try:
@@ -84,7 +87,7 @@ def login_required(view):
     @functools.wraps(view)
     def wrapped_view(**kwargs):
         if g.user is None:
-            return redirect(url_for('auth/login.html'))
+            return redirect(url_for('auth.login'))
 
         return view(**kwargs)
 

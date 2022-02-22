@@ -23,7 +23,11 @@
     </button>
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Optimizer</h5>
+        {% if g.user %}
+          <h5 class="offcanvas-title">{{g.user.username}}</h5>
+        {% else %}
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Optimizer</h5>
+        {% endif %}
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
@@ -44,7 +48,13 @@
             <a class="nav-link" href="#">CONTACT</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">LOG IN</a>
+            {% if g.user %}
+            <a class="nav-link" href="#">{{g.user.username}}</a>
+            <a class="nav-link" href="{{url_for('logout')}}">Logout</a>
+            {% else %}
+            <a class="nav-link" href="{{url_for('auth.register')}}">Register</a>
+            <a class="nav-link" href="{{url_for('auth.login')}}">Login</a>
+            {% endif %}
           </li>
           
         </ul>
@@ -59,9 +69,12 @@
 
 
 <!---- > Header of the content  <!----> 
-<header class="container-fluid header mt-5">
+<header>
   {% block header %}{% endblock %}
 </header>
+{% for message in get_flashed_messages() %}
+    <div class="container text-center alert alert-info mt-3" role="alert">{{ message }}</div>
+{% endfor %}
 
 
 <!---- > Content of the page  <!----> 

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block header %}
-    <h1 class="text-center">Register Individual Account</h1>
+    <h1 class="text-center mt-3 mb-3">Register Individual Account</h1>
 {% endblock %}
 
 {% block content %}
@@ -9,17 +9,17 @@
     <form  method="post">
       <div class="mb-3">
         <label for="username" class="form-label">Username</label>
-        <input type="username" class="form-control" id="username" required placeholder="Username...">
+        <input type="text" name="username" class="form-control" id="username" placeholder="Username...">
       </div>
       <div class="mb-3">
         <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control" id="password" required placeholder="pasword...">
+        <input type="password" name="password" class="form-control" id="password" placeholder="pasword...">
       </div>
       <div class="mb-3">
-        <label for="re-password" class="form-label">Re-password</label>
-        <input type="password" class="form-control" id="re-password" required placeholder="re-pasword...">
+        <label for="repassword" class="form-label">Re-password</label>
+        <input type="password" name="repassword" class="form-control" id="repassword" placeholder="re-pasword...">
       </div>
-      <button type="submit" class="btn btn-secondary">Register</button>
+      <button type="submit" class="btn btn-secondary" value="Register">Register</button>
     </form>
   </div>
 {% endblock %}
