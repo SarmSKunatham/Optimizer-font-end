@@ -2,7 +2,7 @@
 # flaskr should be treated as a package.
 
 import os
-from flask import Flask
+from flask import Flask, render_template
 
 def create_app(test_config=None):
     # create and configure the app
@@ -30,7 +30,7 @@ def create_app(test_config=None):
         pass
     @app.route("/")
     def index():
-        return "<h1>Optimizer</h1>"
+        return render_template('blog/index.html')
     # a simple page that says hello
     @app.route('/hello')
     def hello():
