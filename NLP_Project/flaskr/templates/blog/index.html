@@ -13,10 +13,11 @@
         }
         #heading {
             background: rgba(255, 255, 255, 0.4);
+            background-size: cover;
             font-family: 'Aldrich', sans-serif;
-            width: 100%;
-            margin: 0;
-            margin-left: -2rem;
+            margin: 0 auto;
+            padding: 0;
+            
         }
         #sub-img-1 {
             width:10rem;
@@ -41,13 +42,13 @@
     </style>
 {% endblock %}
 {% block header %}
-    <div class="container-fluid d-flex align-items-center" id="backgroud-img">
-        <h1 id="heading" class="text-center p-3">Optimize your strength and discover opportunities with Optimizer!<br><a href="{{url_for('blog.product')}}" class="btn btn-light">Try now !<a><h1>
+    <div class="container-fluid d-flex align-items-center p-0" id="backgroud-img">
+        <h1 id="heading" class="text-center p-lg-5 p-sm-3 w-100">Optimize your strength and discover opportunities with Optimizer!<br><a href="{{url_for('blog.product')}}" class="btn btn-light">Try now !<a><h1>
     </div>
 {% endblock %}
 {% block content %}
     <div id="sub-content-1" class="container-fluid d-flex justify-content-around align-items-center mt-5 mb-5">
-        <h4>"Utilize the power of AI to magnifying your strategies."</h4>
+        <h4>"Utilize the power of AI to magnify your strategies."</h4>
         <img id="sub-img-1" src="{{url_for('static', filename='images/Ellipse 1.png')}}">
     </div>
     <div id="sub-content-2" class="container-fluid d-flex justify-content-around align-items-center mt-5 mb-4 bg-light pt-3 pb-3">
@@ -65,50 +66,36 @@
             </ul>
         </div>
     </div>
-    <div id="feature-container" class="container-fluid mt-5">
-        <div id="feature-header" class="text-center mb-4">
-            <h4>Feature</h4>
+
+        <div class="row g-4">
+            <div class="col-lg-4 col-sm-12">
+              <div class="card">
+                <img src="{{url_for('static', filename='images/Vector.png')}}" id="vector1" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title mt-3 text-center bg-secondary text-light pt-2 pb-2">SCAN</h5>
+                    <p class="card-text text-center mt-4 mb-4">Scan the whole document with the help of word segmentation and named-entity recognition (NER) to extract keywords.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-12">
+              <div class="card">
+                <img src="{{url_for('static', filename='images/vector2.png')}}" id="vector2" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title mt-3 text-center bg-secondary text-light pt-2 pb-2">STRENGTH</h5>
+                    <p class="card-text text-center mt-4 mb-4">Find your strength points of the context to improve search engine optimization (SEO).</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-12">
+              <div class="card">
+                <img src="{{url_for('static', filename='images/vector3.png')}}" id="vector3" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title mt-3 text-center bg-secondary text-light pt-2 pb-2">STRONGER</h5>
+                    <p class="card-text text-center mt-4 mb-4">Seek for unmet opportunities to enhance ideas, research topics, marketing strategies, and improve SEO.</p>
+                </div>
+              </div>
+            </div>
         </div>
-        <div class="card-group">
-            <div class="card">
-              <img src="{{url_for('static', filename='images/Vector.png')}}" id="vector1" class="card-img-top">
-              <div class="card-body">
-                <h5 class="card-title mt-3 text-center bg-secondary text-light pt-2 pb-2">SCAN</h5>
-                <p class="card-text text-center mt-4 mb-4">Scan the whole document with the help of word segmentation and named-entity recognition (NER) to extract keywords.</p>
-              </div>
-            </div>
-            <div class="card">
-              <img src="{{url_for('static', filename='images/vector2.png')}}" id="vector2" class="card-img-top">
-              <div class="card-body">
-                <h5 class="card-title mt-3 text-center bg-secondary text-light pt-2 pb-2">STRENGTH</h5>
-                <p class="card-text text-center mt-4 mb-4">Find your strength points of the context to improve search engine optimization (SEO).</p>
-              </div>
-            </div>
-            <div class="card">
-              <img src="{{url_for('static', filename='images/vector3.png')}}" id="vector3" class="card-img-top">
-              <div class="card-body">
-                <h5 class="card-title mt-3 text-center bg-secondary text-light pt-2 pb-2">STRONGER</h5>
-                <p class="card-text text-center mt-4 mb-4">Seek for unmet opportunities to enhance ideas, research topics, marketing strategies, and improve SEO.</p>
-              </div>
-            </div>
-          </div>
         
     </div>
 {% endblock %}
-<!--><div id="sub-feature" class="d-flex justify-content-around mt-5">
-            <div id="item-1">
-                <img id="feat-item-1" src="{{url_for('static', filename='images/Vector.png')}}">
-                <h5>AI</h5>
-                <p>AI is the most powerful tool in the world. It can help you to find your competitive advantage for your project.</p>
-            </div>
-            <div id="item-2">
-                <img id="feat-item-2" src="{{url_for('static', filename='images/vector2.png')}}">
-                <h5>AI</h5>
-                <p>AI is the most powerful tool in the world. It can help you to find your competitive advantage for your project.</p>
-            </div>
-            <div id="item-3">
-                <img id="feat-item-3" src="{{url_for('static', filename='images/vector3.png')}}">
-                <h5>AI</h5>
-                <p>AI is the most powerful tool in the world. It can help you to find your competitive advantage for your project.</p>
-            </div>
-        </div> <!-->

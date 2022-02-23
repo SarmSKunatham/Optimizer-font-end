@@ -2,11 +2,62 @@
 
 {% block title %}Optimizer's API{% endblock %}
 {% block stylesheet %}
-    <link rel="stylesheet" href="{{url_for('static', filename='product.css')}}">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Aldrich&family=Audiowide&family=Inter:wght@700&display=swap');
+        #box-head {
+            font-family: 'Audiowide', cursive;
+        }
+    </style>
 {% endblock %}
+
 {% block header %}<h1 class="text-center mt-3">OPTIMIZER API</h1>{% endblock %}
 {% block content %}
-    <div class="container">
-        
+<div class="container-fluid row justify-content-center mb-4">
+    <div class="card text-dark bg-light mb-3 col-12 p-lg-4" id="box-head" style="max-width: 18rem; font-family: 'Audiowide'" >
+        <div class="card-body text-center" >
+        <h5 class="card-title">NLP</h5>
+        <p class="card-text text-muted">Natural language processing.</p>
+        <p class="card-text text-muted">API LIST</p>
+        </div>
     </div>
+</div>
+<div class="row">
+    <div class="col-lg-6 col-md-12 p-lg-4 p-md-2 text-center">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Word Segmentation</h5>
+          <p class="card-text text-muted">Extract words from paragraph.</p>
+          <p class="card-text text-muted"><a class="link-secondary" href="#">URL: https://api.optimizer.superai.me/wordseg.</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-12 p-lg-4 p-md-2 text-center">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Part of Speech (POS) Tagging</h5>
+          <p class="card-text text-muted">Extract and identify grammatical function.</p>
+          <p class="card-text text-muted"><a class="link-secondary" href="#">URL: https://api.optimizer.superai.me/wordseg.</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-12 p-lg-4 p-md-2 text-center">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Named Entity Recognition</h5>
+          <p class="card-text text-muted">Extract and classify named categories.</p>
+          <p class="card-text text-muted"><a class="link-secondary" href="#">URL: https://api.optimizer.superai.me/wordseg.</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-12 p-lg-4 p-md-2 text-center">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Sentence Segmentation</h5>
+          <p class="card-text text-muted">Extract sentences from paragraph.</p>
+          <p class="card-text text-muted"><a class="link-secondary" href="#">URL: https://api.optimizer.superai.me/wordseg.</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
 {% endblock %}

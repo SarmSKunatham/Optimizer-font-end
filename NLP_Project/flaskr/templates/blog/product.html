@@ -2,26 +2,28 @@
 
 {% block title %}Optimizer's Product{% endblock %}
 {% block stylesheet %}
-    <link rel="stylesheet" href="{{url_for('static', filename='product.css')}}">
 {% endblock %}
 {% block header %}<h1 class="text-center mt-3">OUR PRODUCT</h1>{% endblock %}
 {% block content %}
     <form method="POST" class='container-fluid'>
         <div class='row'>
-            <div class="col-9  bg-light p-5">
-                <h3 >Compare your favourite content to optimize your own performance.</h3>
+            <div id="bg-img" class="col-lg-9 col-sm-12  bg-light p-5">
+                <h3>Compare your favourite content to optimize your own performance.</h3>
             </div>
         </div>
         <div class="row container-fluid mt-4 mb-4">
-            <div class="col-lg-6 col-sm-12 d-flex flex-column justify-content-center mb-3">
-                <label class="form-label text-center mt-3"><h5>Content I (Your own content)</h5></label>
-                <textarea name="floatingTextarea1" class="form-control form-control-lg mx-auto" id="floatingTextarea1" placeholder="Enter text..." style="height: 25rem; width:30rem"></textarea>
+            <div class="col-lg-6 col-sm-12 d-flex flex-lg-column flex-md-row justify-content-center mb-3 row">
+                <label for="floatingTextarea1" class="col-lg-12 col-md-12 form-label text-center mt-3"><h4>Place your own content</h4></label>
+                <textarea name="floatingTextarea1" class="col-lg-12 col-md-12 form-control form-control mx-lg-auto ms-md-5"  id="floatingTextarea1" placeholder="Enter text..." style="height: 25rem; width:30rem"></textarea>
             </div>
-            <div class="col-lg-6 col-sm-12 d-flex flex-column justify-content-center mb-3">
-                <label class="form-label text-center mt-3"><h5>Content II (Compared content)</h5></label>
-                <textarea name="floatingTextarea1" class="form-control form-control-lg mx-auto" placeholder="Enter text..." id="floatingTextarea2" style="height: 25rem; width:30rem"></textarea>
+            <div class="col-lg-6 col-sm-12 d-flex flex-lg-column flex-md-row justify-content-center mb-3 row">
+                <label for="floatingTextarea2" class="col-lg-12 col-md-12 form-label text-center mt-3"><h4>Place your reference content</h4></label>
+                <textarea name="floatingTextarea2" class="col-lg-12 col-md-12 form-control form-control mx-lg-auto ms-md-5" placeholder="Enter text..." id="floatingTextarea2" style="height: 25rem; width:30rem"></textarea>
             </div>
-            <button type="button" class="btn btn-secondary w-25 mt-3 mx-auto" value="submit">Submit</button>
+            <div class="container-fluid w-100 justify-content-center d-flex m-md-2">
+                <button type="button" class="btn btn-secondary w-25" value="submit">See result</button>
+            </div>
+            
         </div>
     </form>
     <div class="card text-center mt-5 mb-5">
