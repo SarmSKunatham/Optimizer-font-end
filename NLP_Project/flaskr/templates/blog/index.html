@@ -26,9 +26,15 @@
             width: 17rem;
             height: 21rem;
         }
-        .card-img-top{ 
+        #vector1 {
+            width: 9rem;
+            height: 8rem;
+            margin: 0 auto;
+            margin-top: 1rem;
+        }
+        #vector2, #vector3{ 
             width: 7.5rem;
-            height: 7.5rem;
+            height: 8rem;
             margin: 0 auto;
             margin-top: 1rem;
         }
@@ -60,32 +66,29 @@
         </div>
     </div>
     <div id="feature-container" class="container-fluid mt-5">
-        <div id="feature-header" class="text-center">
+        <div id="feature-header" class="text-center mb-4">
             <h4>Feature</h4>
         </div>
         <div class="card-group">
             <div class="card">
-              <img src="{{url_for('static', filename='images/Vector.png')}}" class="card-img-top">
+              <img src="{{url_for('static', filename='images/Vector.png')}}" id="vector1" class="card-img-top">
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                <h5 class="card-title mt-3 text-center bg-secondary text-light pt-2 pb-2">SCAN</h5>
+                <p class="card-text text-center mt-4 mb-4">Scan the whole document with the help of word segmentation and named-entity recognition (NER) to extract keywords.</p>
               </div>
             </div>
             <div class="card">
-              <img src="{{url_for('static', filename='images/vector2.png')}}" class="card-img-top">
+              <img src="{{url_for('static', filename='images/vector2.png')}}" id="vector2" class="card-img-top">
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                <h5 class="card-title mt-3 text-center bg-secondary text-light pt-2 pb-2">STRENGTH</h5>
+                <p class="card-text text-center mt-4 mb-4">Find your strength points of the context to improve search engine optimization (SEO).</p>
               </div>
             </div>
             <div class="card">
-              <img src="{{url_for('static', filename='images/vector3.png')}}" class="card-img-top">
+              <img src="{{url_for('static', filename='images/vector3.png')}}" id="vector3" class="card-img-top">
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                <h5 class="card-title mt-3 text-center bg-secondary text-light pt-2 pb-2">STRONGER</h5>
+                <p class="card-text text-center mt-4 mb-4">Seek for unmet opportunities to enhance ideas, research topics, marketing strategies, and improve SEO.</p>
               </div>
             </div>
           </div>
