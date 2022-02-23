@@ -19,6 +19,7 @@ def index():
     return render_template('blog/index.html')
 
 @bp.route('/product')
+@login_required
 def product():
 
     return render_template('blog/product.html')
