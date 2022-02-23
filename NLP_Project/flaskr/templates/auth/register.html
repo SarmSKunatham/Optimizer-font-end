@@ -1,25 +1,70 @@
 {% extends 'base.html' %}
-
-{% block header %}
-    <h1 class="text-center mt-3 mb-3">Register Individual Account</h1>
-{% endblock %}
-
 {% block content %}
-<div class="container flex justify-content-center">
-    <form  method="post">
-      <div class="mb-3">
-        <label for="username" class="form-label">Username</label>
-        <input type="text" name="username" class="form-control" id="username" placeholder="Username...">
-      </div>
-      <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input type="password" name="password" class="form-control" id="password" placeholder="pasword...">
-      </div>
-      <div class="mb-3">
-        <label for="repassword" class="form-label">Re-password</label>
-        <input type="password" name="repassword" class="form-control" id="repassword" placeholder="re-pasword...">
-      </div>
-      <button type="submit" class="btn btn-secondary" value="Register">Register</button>
-    </form>
-  </div>
+
+{% block nav%}{% endblock %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Register</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" href="{{url_for('static', filename='login.css')}}">
+
+	</head>
+	<body class="img js-fullheight" style="background-image: url({{url_for('static', filename='images/bg.png')}});">
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">Register Individual Account</h2>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-md-6 col-lg-4">
+					<div class="login-wrap p-0">
+		      	<h3 class="mb-4 text-center">For the purpose of users regulation, your details are required.</h3>
+		      	<form method="post" class="signin-form">
+		      		<div class="form-group">
+		      			<input type="text" name="username" class="form-control" placeholder="Username">
+		      		</div>
+                    <div class="form-group">
+                        <input id="password-field" name="password" type="password" class="form-control" placeholder="Password">
+                        <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                    </div>
+                    <div class="form-group">
+                        <input id="password-field" name="repassword" type="password" class="form-control" placeholder="Re-password">
+                        <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                    </div>
+	            <div class="form-group d-flex justify-content-center">
+	            	<button type="submit" class="btn btn-secondary m-3 p-2" value="Register">Register</button>
+                    <a href="{{url_for('auth.login')}}" class="btn btn-secondary m-3 p-2" value="Register">Sign in</a>
+	            </div>
+	          </form>
+	          <p class="w-100 text-center">&mdash; Or Sign In With &mdash;</p>
+	          <div class="social d-flex text-center">
+	          	<a href="#" class="px-lg-2 m-3 px-md-1 py-lg-2 mr-md-1 rounded"><span class="ion-logo-facebook mr-2"></span> Facebook</a>
+	          	<a href="#" class="px-lg-2 m-3 px-md-1 py-lg-2 ml-md-1 rounded"><span class="ion-logo-twitter mr-2"></span> Twitter</a>
+	          </div>
+		      </div>
+				</div>
+			</div>
+		</div>
+	</section>
+  {% block footer %}{% endblock %}
+
+	<script src="js/jquery.min.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
+
+	</body>
+</html>
 {% endblock %}

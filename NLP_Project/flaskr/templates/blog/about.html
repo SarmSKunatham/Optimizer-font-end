@@ -1,0 +1,30 @@
+{% extends 'base.html'%}
+{% block content %}
+{% block stylesheet%}
+<style>
+    .sub{
+        width: 10em;
+        height: 7em;
+    }
+</style>
+{% endblock %}
+<div class="container-fluid row">
+    <div class="container-fluid col-lg-4 col-md-12 d-flex flex-column justify-content-lg-start justify-content-md-center ms-lg-3 mt-lg-4 mb-lg-4">
+        <h3>About Us</h3>
+        <h5>We are Optimizer from Super AI Engineer Project who takes challenges on AI development to return profits to society. We aim to optimize results and enhance your strategy in business, education, research, and other industries.
+        </h5>
+    </div>
+    <div class="col-lg-4 d-flex justify-content-end">
+        <img src="{{url_for('static', filename='images/aboutimg.png')}}" alt="about" class="img-fluid">
+    </div>
+</div>
+<div class="container-fluid text-center mt-3 mb-3">
+    <h2>Sponsored by</h2>
+</div>
+<div class="container-fluid d-flex mt-5 justify-content-around">
+    <img src="{{url_for('static', filename='images/spon1.png')}}" alt="about" class="img-fluid sub">
+    <img src="{{url_for('static', filename='images/spon2.png')}}" alt="about" class="img-fluid sub">
+    <img src="{{url_for('static', filename='images/spon3.png')}}" alt="about" class="img-fluid sub">
+</div>
+
+{% endblock %}

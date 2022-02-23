@@ -27,3 +27,10 @@ def product():
 def service():
 
     return render_template('blog/service.html')
+@bp.route('/sorry')
+def sorry():
+    return render_template('blog/sorry.html')
+
+@bp.route('/about')
+def about():
+    return render_template('blog/about.html')
