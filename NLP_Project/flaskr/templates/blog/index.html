@@ -2,8 +2,56 @@
 {% block title %}Optimizer{% endblock %}
 {% block styelsheet %}
     <link rel="stylesheet" href="{{url_for('static', filename='index.css')}}">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Aldrich&family=Inter:wght@700&display=swap');
+        #backgroud-img {
+            background-image: url("{{url_for('static', filename='images/bg.png')}}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 30rem;
+        }
+        #heading {
+            background: rgba(255, 255, 255, 0.4);
+            font-family: 'Aldrich', sans-serif;
+            width: 100%;
+            margin: 0;
+            margin-left: -2rem;
+        }
+        #sub-img-1 {
+            width:10rem;
+            height:10rem;
+        }
+        #img-2 {
+            width: 17rem;
+            height: 21rem;
+        }
+        
+    </style>
 {% endblock %}
 {% block header %}
-    <h1>Optimizer</h1>
-    
+    <div class="container-fluid d-flex align-items-center" id="backgroud-img">
+        <h1 id="heading" class="text-center p-3">Optimize your strength and discover opportunities with Optimizer!<br><a href="{{url_for('blog.product')}}" class="btn btn-light">Try now!<a><h1>
+    </div>
+{% endblock %}
+{% block content %}
+    <div id="sub-content-1" class="container-fluid d-flex justify-content-around align-items-center mt-5 mb-5">
+        <h4>"Utilize the power of AI to magnifying your strategies."</h4>
+        <img id="sub-img-1" src="{{url_for('static', filename='images/Ellipse 1.png')}}">
+    </div>
+    <div id="sub-content-2" class="container-fluid d-flex justify-content-around align-items-center mt-5 mb-4 bg-light pt-3 pb-3">
+        <div id="sub-img-2">
+            <img id="img-2" src="{{url_for('static', filename='images/file1.png')}}">
+        </div>
+        <div id="content2">
+            <h5>WHY?</h5>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item text-muted bg-light">Have you ever needed to find your competitive advantage for your project ? </li>
+                <li class="list-group-item text-muted bg-light">Have you ever wondered why other’s articles are popular?</li>
+                <li class="list-group-item text-muted bg-light">What are interesting topics?</li>
+                <li class="list-group-item text-muted bg-light">What are they already mentioned?</li>
+                <li class="list-group-item text-muted bg-light">What are the strength of your content?</li>
+            </ul>
+        </div>
+    </div>
 {% endblock %}

@@ -22,3 +22,8 @@ def index():
 def product():
 
     return render_template('blog/product.html')
+
+@bp.route('/service')
+def service():
+
+    return render_template('blog/service.html')
