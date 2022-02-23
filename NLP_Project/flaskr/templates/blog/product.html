@@ -6,7 +6,7 @@
 {% endblock %}
 {% block header %}<h1 class="text-center mt-3">OUR PRODUCT</h1>{% endblock %}
 {% block content %}
-    <form class='container-fluid'>
+    <form method="POST" class='container-fluid'>
         <div class='row'>
             <div class="col-9  bg-light p-5">
                 <h3 >Compare your favourite content to optimize your own performance.</h3>
@@ -24,5 +24,18 @@
             <button type="button" class="btn btn-secondary w-25 mt-3 mx-auto" value="submit">Submit</button>
         </div>
     </form>
+    <div class="card text-center">
+        <div class="card-header">
+          Featured
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Special title treatment</h5>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+        <div class="card-footer text-muted">
+          2 days ago
+        </div>
+      </div>
     
 {% endblock %}
