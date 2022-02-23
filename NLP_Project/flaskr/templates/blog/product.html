@@ -6,21 +6,23 @@
 {% endblock %}
 {% block header %}<h1 class="text-center mt-3">OUR PRODUCT</h1>{% endblock %}
 {% block content %}
-    <div class='container-fluid'>
+    <form class='container-fluid'>
         <div class='row'>
             <div class="col-9  bg-light p-5">
                 <h3 >Compare your favourite content to optimize your own performance.</h3>
             </div>
         </div>
         <div class="row container-fluid mt-4 mb-4">
-            <div class="col-lg-6 col-sm-12 mx-auto d-flex flex-column bd-highlight mb-3">
+            <div class="col-lg-6 col-sm-12 d-flex flex-column justify-content-center mb-3">
                 <label class="form-label text-center"><h5>Content I (Your own content)</h5></label>
                 <textarea name="floatingTextarea1" class="form-control form-control-lg mx-auto" id="floatingTextarea1" placeholder="Enter text..." style="height: 25rem; width:30rem"></textarea>
             </div>
-            <div class="col-lg-6 col-sm-12 mx-auto d-flex flex-column bd-highlight mb-3">
+            <div class="col-lg-6 col-sm-12 d-flex flex-column justify-content-center mb-3">
                 <label class="form-label text-center"><h5>Content II (Compared content)</h5></label>
                 <textarea name="floatingTextarea1" class="form-control form-control-lg mx-auto" placeholder="Enter text..." id="floatingTextarea2" style="height: 25rem; width:30rem"></textarea>
             </div>
+            <button type="button" class="btn btn-secondary w-25 mt-3 mx-auto" value="submit">Submit</button>
         </div>
-    </div>
+    </form>
+    
 {% endblock %}
