@@ -27,9 +27,9 @@
                          Choose content
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><button class="dropdown-item" onclick="input();">สลดใจ รัสเซียบุกยูเครน สังเวยแล้วหลายร้อยศพ</button></li>
-                            <li><button class="dropdown-item" onclick="input2()">การกินอาหารเพื่อสุขภาพที่ดี</button></li>
-                            <li><button class="dropdown-item" onclick="input3()">กิจกรรมเด็ด ๆ ที่คนทัวร์ไต้หวันฤดูร้อนไม่ควรพลาด!</button></li>
+                            <li><button class="dropdown-item" onclick="input();">News</button></li>
+                            <li><button class="dropdown-item" onclick="input2()">Food</button></li>
+                            <li><button class="dropdown-item" onclick="input3()">Travel</button></li>
                             <li><button class="dropdown-item bg-light" onclick="reset()">Custom</button></li>
                         </ul>
                     </div>
@@ -57,14 +57,16 @@
         <div class="container-fluid d-lg-flex justify-content-lg-around">
             <div class="card-body">
                 <h5 class="card-title">Keyword Strength</h5>
+                <li class="list-group-item bg-secondary text-light">your strength words (compare to reference word)</li>
+
                 <ol id="list-strength" class="list-group">
-                    <li class="list-group-item bg-secondary text-light">your strength words (compare to reference word)</li>
                 </ol>
               </div>
               <div class="card-body">
                   <h5 class="card-title">Keyword Opportunity</h5>
+                  <li class="list-group-item bg-secondary text-light">your word =====> your opportunity</li>
+
                   <ol id="list-opportunity" class="list-group">
-                    <li class="list-group-item bg-secondary text-light">your word =====> your opportunity</li>
                   </ol>
               </div>
         </div>
@@ -85,6 +87,7 @@
             let idInputRef = "refStrText"
             let ownStrText = document.getElementById("content1").value;
             let refStrText = document.getElementById("content2").value;
+            
             let data = {"text1":refStrText, "text2":ownStrText}
             let response
             let err
@@ -109,17 +112,16 @@
             resultContainer.style.display = "block"
             let listStrength = document.getElementById("list-strength")
             let listOpportunity = document.getElementById("list-opportunity")
-            
             for(key in response.strength){
                 newcontainer = document.createElement('li')
-                newcontainer.textContent = response.strength[key][1] + '(' + response.strength[key][0] + ')'
+                newcontainer.textContent = response.strength[key][0] + '(' + response.strength[key][1] + ')'
                 newcontainer.className = "list-group-item"
                 listStrength.appendChild(newcontainer)
             }
 
             for(key in response.opportunity){
                 newcontainer = document.createElement('li')
-                newcontainer.textContent = response.opportunity[key][0] + '=====>' + response.opportunity[key][1]
+                newcontainer.textContent = response.opportunity[key][1] + '=====>' + response.opportunity[key][0]
                 newcontainer.className = "list-group-item"
                 listOpportunity.appendChild(newcontainer)
             }
