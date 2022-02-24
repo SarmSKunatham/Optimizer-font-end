@@ -84,12 +84,14 @@
             for(key in response.strength){
                 newcontainer = document.createElement('li')
                 newcontainer.textContent = response.strength[key]
+                newcontainer.className = "list-group-item"
                 listStrength.appendChild(newcontainer)
             }
 
             for(key in response.opportunity){
                 newcontainer = document.createElement('li')
                 newcontainer.textContent = response.opportunity[key]
+                newcontainer.className = "list-group-item"
                 listOpportunity.appendChild(newcontainer)
             }
             
