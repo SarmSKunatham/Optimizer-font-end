@@ -1,6 +1,7 @@
 from flask import (
-    Blueprint, flash, g, redirect, render_template, request, url_for
+    Blueprint, flash, g, redirect, render_template, request, url_for,jsonify
 )
+from itsdangerous import json
 from werkzeug.exceptions import abort
 
 from flaskr.auth import login_required
@@ -18,10 +19,13 @@ def index():
     # ).fetchall()
     return render_template('blog/index.html')
 
-@bp.route('/product')
-@login_required
-def product():
+@bp.route('/product', methods=('GET', 'POST'))
 
+def product():
+    if request.method == "POST":
+        data = request.get_json()
+        print(data)
+        return jsonify(data)
     return render_template('blog/product.html')
 
 @bp.route('/service')

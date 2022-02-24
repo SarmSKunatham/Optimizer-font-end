@@ -3,44 +3,97 @@
 {% block title %}Optimizer's Product{% endblock %}
 {% block stylesheet %}
 {% endblock %}
-{% block header %}<h1 class="text-center mt-3">OUR PRODUCT</h1>{% endblock %}
+{% block header %}<h1 class="text-center mt-5 mt-md-5">OUR PRODUCT</h1>{% endblock %}
 {% block content %}
-    <form method="POST" class='container-fluid'>
-        <div class='row'>
-            <div id="bg-img" class="col-lg-9 col-sm-12  bg-light p-5">
+    <div class='container-fluid form-group'>
+        <div class='cont1'>
+            <div id="bg-img" class="col-lg-9 col-md-12  bg-light p-5">
                 <h3>Compare your favourite content to optimize your own performance.</h3>
             </div>
         </div>
-        <div class="row container-fluid mt-4 mb-4">
-            <div class="col-lg-6 col-sm-12 d-flex flex-lg-column flex-md-row justify-content-center mb-3 row">
-                <label for="floatingTextarea1" class="col-lg-12 col-md-12 form-label text-center mt-3"><h4>Place your own content</h4></label>
-                <textarea name="floatingTextarea1" class="col-lg-12 col-md-12 form-control form-control mx-lg-auto ms-md-5"  id="floatingTextarea1" placeholder="Enter text..." style="height: 25rem; width:30rem"></textarea>
+        <div id="boss" class="d-flex flex-lg-row justify-content-lg-around mt-5 flex-sm-column flex-md-column align-items-md-center">
+            <div class="cont2">
+                <div class="form-floating">
+                    <textarea class="form-control mt-3" placeholder="Leave a comment here" id="content1" ></textarea>
+                    <label for="floatingTextarea" class="fs-5">Place your own content</label>
+                  </div>
             </div>
-            <div class="col-lg-6 col-sm-12 d-flex flex-lg-column flex-md-row justify-content-center mb-3 row">
-                <label for="floatingTextarea2" class="col-lg-12 col-md-12 form-label text-center mt-3"><h4>Place your reference content</h4></label>
-                <textarea name="floatingTextarea2" class="col-lg-12 col-md-12 form-control form-control mx-lg-auto ms-md-5" placeholder="Enter text..." id="floatingTextarea2" style="height: 25rem; width:30rem"></textarea>
-            </div>
-            <div class="container-fluid w-100 justify-content-center d-flex m-md-2">
-                <button type="button" class="btn btn-secondary w-25" value="submit">See result</button>
+            <div class="">
+                <div class="form-floating">
+                    <textarea class="form-control mt-3"  placeholder="Leave a comment here" id="content2" ></textarea>
+                    <label for="floatingTextarea" class="fs-5">Place your reference content</label>
+                </div>
             </div>
             
+            
         </div>
-    </form>
-    <div class="card text-center mt-5 mb-5">
+        <div class="container-fluid w-100 justify-content-center d-flex mt-5">
+            <button type="submit" name="submit" class="btn btn-secondary w-25 pt-lg-2 pb-lg-2 fs-5" value="Result" onclick="get_text();">See result</button>
+        </div>
+    </div>
+    <div id="answer" class="card text-center mt-5 mb-5">
         <div class="card-header">
           Featured
         </div>
         <div class="card-body">
           <h5 class="card-title">Keyword Strength</h5>
-          <p class="card-text">Keyword Strength goes here...</p>
+          <ol id="list-strength" class="list-group"></ol>
         </div>
         <div class="card-body">
             <h5 class="card-title">Keyword Opportunity</h5>
-            <p class="card-text">Keyword Opportunity goes here...</p>
+            <ol id="list-opportunity" class="list-group"></ol>
         </div>
         <div class="card-footer text-muted">
           Thank you for using our service >-<.
         </div>
-      </div>
+    </div>
+
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+    <script>
+        // run when press the btn 
+        async function get_text(){
+            let idInputOwn = "ownStrText"
+            let idInputRef = "refStrText"
+            let ownStrText = document.getElementById("content1").value;
+            let refStrText = document.getElementById("content2").value;
+            let data = {"text1":refStrText, "text2":ownStrText}
+            let response
+            console.log(data)
+            await $.ajax({
+                type: "POST",
+                url: "http://nlp1.optimizer.superai.me:10500/task5",
+                dataType: "json",
+                contentType: "application/json",
+                data: JSON.stringify(data),
+                success: (res, status) => {
+                    console.log("success:", res, status);
+                    response = res
+                },
+                error: (res) => {
+                    console.log("Error: "+res.status)
+                }
+            })
+            console.log(response)
+            let resultContainer = document.getElementById("answer")
+            resultContainer.style.display = "block"
+            let listStrength = document.getElementById("list-strength")
+            let listOpportunity = document.getElementById("list-opportunity")
+            
+            for(key in response.strength){
+                newcontainer = document.createElement('li')
+                newcontainer.textContent = response.strength[key]
+                listStrength.appendChild(newcontainer)
+            }
+
+            for(key in response.opportunity){
+                newcontainer = document.createElement('li')
+                newcontainer.textContent = response.opportunity[key]
+                listOpportunity.appendChild(newcontainer)
+            }
+            
+        }
+    </script>
     
 {% endblock %}
