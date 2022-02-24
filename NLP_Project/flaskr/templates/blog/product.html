@@ -13,15 +13,32 @@
         </div>
         <div id="boss" class="d-flex flex-lg-row justify-content-lg-around mt-5 flex-sm-column flex-md-column align-items-md-center">
             <div class="cont2">
+                <label for="floatingTextarea" class="fs-5 text-light bg-secondary w-100 text-center pt-2 pb-2 mb-md-2 mt-md-2">Place your own content</label>
                 <div class="form-floating">
                     <textarea class="form-control mt-3" placeholder="Leave a comment here" id="content1" ></textarea>
-                    <label for="floatingTextarea" class="fs-5">Place your own content</label>
+                    
                   </div>
             </div>
             <div class="">
+                <div class="d-flex align-items-center">
+                    <label for="floatingTextarea" class="fs-5 bg-light w-100 text-center pt-2 pb-2 mb-md-2 mt-md-2">Place your reference content</label>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                         Choose content
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><button class="dropdown-item" onclick="input();">สลดใจ รัสเซียบุกยูเครน สังเวยแล้วหลายร้อยศพ</button></li>
+                            <li><button class="dropdown-item" onclick="input2()">การกินอาหารเพื่อสุขภาพที่ดี</button></li>
+                            <li><button class="dropdown-item" onclick="input3()">กิจกรรมเด็ด ๆ ที่คนทัวร์ไต้หวันฤดูร้อนไม่ควรพลาด!</button></li>
+                            <li><button class="dropdown-item bg-light" onclick="reset()">Custom</button></li>
+                        </ul>
+                    </div>
+                </div>
+                
                 <div class="form-floating">
+                    
                     <textarea class="form-control mt-3"  placeholder="Leave a comment here" id="content2" ></textarea>
-                    <label for="floatingTextarea" class="fs-5">Place your reference content</label>
+                    
                 </div>
             </div>
             
@@ -30,19 +47,28 @@
         <div class="container-fluid w-100 justify-content-center d-flex mt-5">
             <button type="submit" name="submit" class="btn btn-secondary w-25 pt-lg-2 pb-lg-2 fs-5" value="Result" onclick="get_text();">See result</button>
         </div>
+    
+        
     </div>
     <div id="answer" class="card text-center mt-5 mb-5">
-        <div class="card-header">
+        <div class="card-header fs-3">
           Featured
         </div>
-        <div class="card-body">
-          <h5 class="card-title">Keyword Strength</h5>
-          <ol id="list-strength" class="list-group"></ol>
+        <div class="container-fluid d-lg-flex justify-content-lg-around">
+            <div class="card-body">
+                <h5 class="card-title">Keyword Strength</h5>
+                <ol id="list-strength" class="list-group">
+                    <li class="list-group-item bg-secondary text-light">your strength words (compare to reference word)</li>
+                </ol>
+              </div>
+              <div class="card-body">
+                  <h5 class="card-title">Keyword Opportunity</h5>
+                  <ol id="list-opportunity" class="list-group">
+                    <li class="list-group-item bg-secondary text-light">your word =====> your opportunity</li>
+                  </ol>
+              </div>
         </div>
-        <div class="card-body">
-            <h5 class="card-title">Keyword Opportunity</h5>
-            <ol id="list-opportunity" class="list-group"></ol>
-        </div>
+        
         <div class="card-footer text-muted">
           Thank you for using our service >-<.
         </div>
@@ -50,6 +76,7 @@
 
     
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
     <script>
         // run when press the btn 
@@ -60,6 +87,7 @@
             let refStrText = document.getElementById("content2").value;
             let data = {"text1":refStrText, "text2":ownStrText}
             let response
+            let err
             console.log(data)
             await $.ajax({
                 type: "POST",
@@ -76,6 +104,7 @@
                 }
             })
             console.log(response)
+            console.log(err)
             let resultContainer = document.getElementById("answer")
             resultContainer.style.display = "block"
             let listStrength = document.getElementById("list-strength")
@@ -83,19 +112,35 @@
             
             for(key in response.strength){
                 newcontainer = document.createElement('li')
-                newcontainer.textContent = response.strength[key]
+                newcontainer.textContent = response.strength[key][1] + '(' + response.strength[key][0] + ')'
                 newcontainer.className = "list-group-item"
                 listStrength.appendChild(newcontainer)
             }
 
             for(key in response.opportunity){
                 newcontainer = document.createElement('li')
-                newcontainer.textContent = response.opportunity[key]
+                newcontainer.textContent = response.opportunity[key][0] + '=====>' + response.opportunity[key][1]
                 newcontainer.className = "list-group-item"
                 listOpportunity.appendChild(newcontainer)
             }
-            
+            alert("success")
         }
+        function input(){
+            content = "สื่อต่างประเทศและเดลี่เมลรายงาน กระทรวงกลาโหมยูเครน แถลง ทหารยูเครนเสียชีวิตแล้วหลายร้อยศพ  รวมทั้งมีพลเรือนเสียชีวิตด้วย หลังจากกองทัพรัสเซียเปิดฉากบุกยูเครนทั้งภาคพื้นดินและทางอากาศ ระดมยิงขีปนาวุธ โจมตีจากทุกทิศทางถล่มเป้าหมายทางทหารและยุทธศาสตร์ที่สำคัญในเมืองสำคัญหลายเมืองของยูเครน โดยเฉพาะกรุงเคียฟ และเมืองคาร์คีฟ วิกฤติรัสเซีย-ยูเครนติดตาม 24 ก.พ. 65 ทูตยูเครนยอมรับ มียุทโธปกรณ์ไม่พอต้านรัสเซีย วอนนานาชาติช่วยเหลือ 24 ก.พ. 65 จีนปัดเรียกรัสเซีย “รุกราน” ยูเครน แนะ ปชช.ติดธงชาติที่รถหวั่นโดนลูกหลง 24 ก.พ. 65 กต.ใช้เมืองลวิฟเป็นฐานชั่วคราวช่วยคนไทยในยูเครน ก่อนรวบรวมพาบินกลับไทย ดูทั้งหมด  กองทัพรัสเซียได้ส่งขบวนรถถังข้ามชายแดนจากเบลารุส เข้ามาทางภาคเหนือของยูเครน หลังจากรัสเซียเสร็จสิ้นการร่วมซ้อมรบครั้งใหญ่กับเบลารุส โดยมีผู้ใช้งานโซเชียลมีเดีย แชร์รูปเหตุการณ์สะเทือนขวัญ รัสเซียบุกยูเครนอย่างน่าหวาดกลัว พื้นที่ในกรุงเคียฟ เมืองหลวงยูเครน ที่ถูกรัสเซียโจมตี พื้นที่ในกรุงเคียฟ เมืองหลวงยูเครน ที่ถูกรัสเซียโจมตี ด้านกองทัพยูเครน เปิดเผยว่า กองทัพยูเครนได้ใช้ระบบป้องกันภัยทางอากาศยิงสกัดตอบโต้ขีปนาวุธ และเครื่องบินรบของรัสเซียโดยสามารถยิงเครื่องบินรบรัสเซียตกไปแล้ว 6 ลำ และเฮลิคอปเตอร์ 1 ลำ ที่บริเวณใกล้กับเมืองคาร์คีฟ เมืองใหญ่อันดับสองของยูเครน."
+            document.getElementById('content2').value = content;
+        }
+        function input2(){
+            content = "อาหารเป็นสิ่งที่รับประทานเข้าไปแล้วมีประโยชน์ต่อร่างกาย ทำให้ร่างกายเจริญเติบโตช่วยซ่อมแซมส่วนที่สึกหรอ ให้พลังงานแก่ร่างกายช่วยควบคุมอวัยวะต่างๆของร่างกายให้ทำงานเป็นปกติ อาหารเป็นปัจจัยสี่ที่มีความสำคัญต่อการดำรงชีวิตของคนเรา ซึ่งในแต่ละวัยร่างกายต้องการอาหารในปริมาณและสารอาหารที่แตกต่างกันไป การรับประทานอาหารเพื่อสุขภาพที่ดีนั้นเป็นสิ่งที่สำคัญต่อร่างกายของคนเรา เป็นต้นว่าเนื้อ นม ไข่ ถั่ว (โปรตีน) เป็นหมู่ที่ทำให้ร่างกายเจริญเติบโตจึงเหมาะสำหรับเด็กถ้าเด็กขาดหมู่นี้มักจะตัวเล็กและแคระแกรน ในกรณีเนื้อราคาแพงใช้ถั่วทดแทนได้หรือกรณีกินเจหรือมังสวิรัติ ส่วนผู้ใหญ่ควรเน้นพวกแป้งและน้ำตาล(คาร์โบไฮเดรต)เนื่องจากอาหารหมู่นี้ให้พลังงาน ส่วนผักและผลไม้ซึ่งให้เกลือแร่และวิตามินนั้นจะช่วยให้ระบบขับถ่ายได้ดีถ้าขาดหมู่นี้จะทำให้ท้องผูกถ้าท้องผูกบ่อยๆเป็นระยะเวลานานกากอาหารที่หมักหมมในลำไส้ใหญ่ จะสุ่มเสี่ยงต่อการเป็นมะเร็งในลำไส้ใหญ่ได้ในคนที่ชอบรับประทานเนื้อสัตว์ยกเว้นปลา มักจะพบกับปัญหานี้เสมอ เพราะฉะนั้นผักและผลไม้จะช่วยได้ ส่วนไขมันซึ่งทำให้ร่างกายอบอุ่นควรรับประทานแต่น้อยถ้ารับประทานมากจะทำให้อ้วน (โรคอ้วน) ซึ่งจะเป็นบ่อเกิดของโรคภัยไข้เจ็บต่างๆไม่ว่าจะเป็นเบาหวาน ความดันโลหิตสูง ในการรับประทานอาหาร ปิ้ง ย่าง โดยเฉพาะเนื้อสัตว์ต่างๆควรหลีกเลี่ยงเนื้อที่ไหม้ดำหรือรมควันเนื่องจากจะเป็นต้นเหตุของสารก่อมะเร็ง ควรงดเว้นอาหารรสจัดเนื่องจากจะส่งผลเสียต่ออวัยวะต่างๆเป็นต้นว่าเค็มจะอันตรายต่อไตอย่างนี้เป็นต้น การรับประทานอาหารให้เกิดผลดีต่อสุขภาพควรรับประทานให้ครบทั้ง 5 หมู่ให้ได้ทั้งปริมาณทั้งคุณภาพ ปราศจากสารพิษปนเปื้อน ถ้าตามใจปากจะมากจะเป็นโรค สุขภาพจิตที่ดีอยู่ในร่างกายที่สมบูรณ์"
+            document.getElementById('content2').value = content;
+        }    
+        function input3(){
+            content = "ประเทศไต้หวันนั้นเป็นประเทศที่มีความหลากหลายของสถานที่ท่องเที่ยวเลยทีเดียว เช่น ธรรมชาติสวย ๆ สถานที่ทางประวัติศาสตร์ อุทยาน เป็นต้น เป็นที่ท่องเที่ยวที่ไม่ห่างไกลกับประเทศไทยมากนัก เดินทางได้ง่าย ถ้าหากพูดถึงสภาพอากาศในช่วงนี้ ก็กำลังจะเริ่มเข้าสู่ช่วงหน้าร้อนหรือฤดูร้อน ถือเป็นอีกฤดูที่ผู้คนมักชอบท่องเที่ยวกันทั้งในและต่างประเทศด้วย อาจจะต้องการจองตั๋วไปทัวร์ไต้หวันก็เป็นได้ น่าสนใจอยู่ไม่น้อยเลยทีเดียว แต่ก่อนที่คุณจะวางแผนการเดินทางไปเที่ยวที่ประเทศเพื่อนบ้านอย่างไต้หวันนั้น นอกจากจะต้องศึกษาสถานที่ท่องเที่ยวที่โดนใจหรือชื่นชอบแล้ว ก็สามารถเลือกที่ท่องเที่ยวให้ตรงกับเทศกาลด้วย เพราะบางสถานที่นั้นจะสวยงามเมื่อถึงเวลาที่เหมาะสมนั่นเอง แต่แน่นอนว่าถ้าหากคุณไปท่องเที่ยว ชมธรรมชาติและสถานที่ท่องเที่ยวสุดน่าประทับใจแล้ว ก็ควรมีกิจกรรมดี ๆ ที่สามารถทำให้การท่องเที่ยวดูสนุกสนาน ไม่น่าเบื่อจนเกินไปนั่นเอง ถ้ามาไต้หวันหน้าร้อนจะมีกิจกรรมอะไรบ้าง แนะนำดังนี้"
+            document.getElementById('content2').value = content;
+        }
+        function reset(){
+            content = ""
+            document.getElementById('content2').value = content;
+        }           
     </script>
     
 {% endblock %}
