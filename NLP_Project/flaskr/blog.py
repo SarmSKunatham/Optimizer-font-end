@@ -1,11 +1,18 @@
+from json import JSONDecoder, JSONEncoder
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, url_for,jsonify
 )
 from itsdangerous import json
 from werkzeug.exceptions import abort
+import requests
+import json
+import ast
 
 from flaskr.auth import login_required
 from flaskr.db import get_db
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud
+from PIL import Image
 
 bp = Blueprint('blog', __name__)
 
@@ -20,12 +27,17 @@ def index():
     return render_template('blog/index.html')
 
 @bp.route('/product', methods=('GET', 'POST'))
-
 def product():
     if request.method == "POST":
-        data = request.get_json()
-        print(data)
-        return jsonify(data)
+        text = request.form['text']
+        data = {"text": text}
+        a = requests.post('http://nlp1.optimizer.superai.me:10100/word_seg/count', json=data, headers={'Content-Type': 'application/json;charset=utf-8'})
+        result = a.text
+        wordcloud = WordCloud(width = 1000, height = 500).generate_from_frequencies(result.item)
+        # a = a.json()
+        # wordcloud.to_file('check.png')
+        return result
+        
     return render_template('blog/product.html')
 
 @bp.route('/service')

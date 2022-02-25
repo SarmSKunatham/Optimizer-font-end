@@ -14,10 +14,10 @@
         <div id="boss" class="d-flex flex-lg-row justify-content-lg-around mt-5 flex-sm-column flex-md-column align-items-md-center">
             <div class="cont2">
                 <label for="floatingTextarea" class="fs-5 text-light bg-secondary w-100 text-center pt-2 pb-2 mb-md-2 mt-md-2">Place your own content</label>
-                <div class="form-floating">
-                    <textarea class="form-control mt-3" placeholder="Leave a comment here" id="content1" ></textarea>
+                <form class="form-floating">
+                    <textarea name="textarea" class="form-control mt-3" placeholder="Leave a comment here" id="content1" ></textarea>
                     
-                  </div>
+                </form>
             </div>
             <div class="">
                 <div class="d-flex align-items-center">
@@ -47,12 +47,16 @@
         <div class="container-fluid w-100 justify-content-center d-flex mt-5">
             <button type="submit" name="submit" class="btn btn-secondary w-25 pt-lg-2 pb-lg-2 fs-5" value="Result" onclick="get_text();">See result</button>
         </div>
+        <form method="post" action="{{url_for('blog.product')}}" class="container-fluid w-100 justify-content-center d-flex mt-5">
+            <input type="textarea" name="text" id="text" class="form-control w-50" style="display:none;">
+            <button id="finalist" type="submit" name="submit" class="btn btn-success w-25 pt-lg-2 pb-lg-2 fs-5" onclick="check();">See Word Cloud</button>
+        </form>
     
         
     </div>
     <div id="answer" class="card text-center mt-5 mb-5">
         <div class="card-header fs-3">
-          Featured
+          Features
         </div>
         <div class="container-fluid d-lg-flex justify-content-lg-around">
             <div class="card-body">
@@ -142,7 +146,13 @@
         function reset(){
             content = ""
             document.getElementById('content2').value = content;
-        }           
+        }
+        function check()
+        {
+            let want = document.getElementById('content1').value;
+                document.getElementById("text").value = want;
+            }
+        
     </script>
     
 {% endblock %}
