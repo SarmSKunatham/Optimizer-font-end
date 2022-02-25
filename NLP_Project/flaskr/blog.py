@@ -30,13 +30,14 @@ def index():
 def product():
     if request.method == "POST":
         text = request.form['text']
+        headers = {
+        'content-type': "application/json; charset=utf-8"
+         }
         data = {"text": text}
-        a = requests.post('http://nlp1.optimizer.superai.me:10100/word_seg/count', json=data, headers={'Content-Type': 'application/json;charset=utf-8'})
-        result = a.text
-        wordcloud = WordCloud(width = 1000, height = 500).generate_from_frequencies(result.item)
-        # a = a.json()
-        # wordcloud.to_file('check.png')
-        return result
+        response = requests.request("POST", 'http://nlp1.optimizer.superai.me:10100/word_seg/count', data=json.dumps(data), headers=headers)
+        # wordcloud = WordCloud(width = 1000, height = 500).generate_from_frequencies(response.json())
+        # wordcloud.to_file('./flaskr/static/images/out.png')
+        return response.json()
         
     return render_template('blog/product.html')
 

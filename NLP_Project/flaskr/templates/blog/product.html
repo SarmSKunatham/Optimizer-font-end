@@ -47,10 +47,7 @@
         <div class="container-fluid w-100 justify-content-center d-flex mt-5">
             <button type="submit" name="submit" class="btn btn-secondary w-25 pt-lg-2 pb-lg-2 fs-5" value="Result" onclick="get_text();">See result</button>
         </div>
-        <form method="post" action="{{url_for('blog.product')}}" class="container-fluid w-100 justify-content-center d-flex mt-5">
-            <input type="textarea" name="text" id="text" class="form-control w-50" style="display:none;">
-            <button id="finalist" type="submit" name="submit" class="btn btn-success w-25 pt-lg-2 pb-lg-2 fs-5" onclick="check();">See Word Cloud</button>
-        </form>
+        
     
         
     </div>
@@ -61,14 +58,14 @@
         <div class="container-fluid d-lg-flex justify-content-lg-around">
             <div class="card-body">
                 <h5 class="card-title">Keyword Strength</h5>
-                <li class="list-group-item bg-secondary text-light">your strength words (compare to reference word)</li>
+                <li class="list-group-item bg-secondary text-light">your strength words</li>
 
                 <ol id="list-strength" class="list-group">
                 </ol>
               </div>
               <div class="card-body">
                   <h5 class="card-title">Keyword Opportunity</h5>
-                  <li class="list-group-item bg-secondary text-light">your word =====> your opportunity</li>
+                  <li class="list-group-item bg-secondary text-light">your opportunity</li>
 
                   <ol id="list-opportunity" class="list-group">
                   </ol>
@@ -118,14 +115,14 @@
             let listOpportunity = document.getElementById("list-opportunity")
             for(key in response.strength){
                 newcontainer = document.createElement('li')
-                newcontainer.textContent = response.strength[key][0] + '(' + response.strength[key][1] + ')'
+                newcontainer.textContent = response.strength[key][0]
                 newcontainer.className = "list-group-item"
                 listStrength.appendChild(newcontainer)
             }
 
             for(key in response.opportunity){
                 newcontainer = document.createElement('li')
-                newcontainer.textContent = response.opportunity[key][1] + '=====>' + response.opportunity[key][0]
+                newcontainer.textContent = response.opportunity[key][0]
                 newcontainer.className = "list-group-item"
                 listOpportunity.appendChild(newcontainer)
             }
